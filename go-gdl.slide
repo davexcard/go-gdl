@@ -28,7 +28,7 @@ Further Text, including invocations like:
 
 * Example
 
-.play -edit -numbers go-gdl/code/x.go
+.play -edit -numbers code/x.go
 
 http://127.0.0.1:3999/talks/2018/go-gdl.slide#3
 

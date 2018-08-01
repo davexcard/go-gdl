@@ -1,0 +1,43 @@
+Introducción a Go: Variables, tipos de datos y funciones
+
+David Carrillo
+Software Developer, iTexico
+dcarrillo@itexico.net
+@davexcard
+
+Sergio Jimenez
+Software Developer, iTexico
+joe@example.com
+http://url/
+@twitter_name
+
+* Title of slide or section (must have asterisk)
+
+Some Text
+
+- bullets
+- more bullets
+- a bullet with
+
+Some More text
+
+  Preformatted text
+  is indented (however you like)
+
+Further Text, including invocations like:
+
+* Example
+
+.play -edit -numbers go-gdl/code/x.go
+
+http://127.0.0.1:3999/talks/2018/go-gdl.slide#3
+
+* Ranges
+  uint8  : 0 to 255 
+  uint16 : 0 to 65535 
+  uint32 : 0 to 4294967295 
+  uint64 : 0 to 18446744073709551615 
+  int8   : -128 to 127 
+  int16  : -32768 to 32767 
+  int32  : -2147483648 to 2147483647 
+  int64  : -9223372036854775808 to 9223372036854775807

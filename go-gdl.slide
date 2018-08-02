@@ -11,6 +11,8 @@ joe@example.com
 http://url/
 @twitter_name
 
+* Tipos de datos
+
 * Tipos de datos básicos
 
   int8  int16  int32  int64
@@ -51,19 +53,49 @@ http://url/
 
 * Conversiones de tipos Numéricos
 
-.play -edit -numbers numbers/number_types.go
+.play -edit -numbers code/numbers/number_types.go
 .image images/gopherswrench.jpg 300 500
 
 * Strings
-.play -edit -numbers strings/strings.go
+.play -edit -numbers code/strings/strings.go
 
-* Soporte unicode
-.play -edit -numbers emojis/emojis.go
+Soporte unicode
+.play -edit -numbers code/emojis/emojis.go
 
 * Constantes
 
-.play -edit -numbers constants/constants.go
+.play -edit -numbers code/constants/constants.go
 
 - Se declaran como variables pero con la palabra reservada const.
 - Pueden ser un caracter, cadena de caracteres, booleano o valores numéricos.
 - No pueden ser declaradas con la sintaxis :=
+
+* Funciones
+
+* Sintaxis
+.code code/methods/methods.go /^func main/,/^}/
+
+Ejemplo simple:
+
+.play -edit -numbers code/sum/sum.go
+
+* Simplificado
+.play -edit -numbers code/sum1/sum1.go
+
+* No a la sobrecarga de funciones
+.play -edit -numbers code/sum2/sum2.go
+.image images/gopher-no.png 140 170
+
+* Retorno de un valor
+.play -edit -numbers code/sum3/sum3.go
+
+* Retorno de multiples valores
+.play -edit -numbers code/div-and-remainder/div-and-remainder.go
+
+* Todas las llamada a funciones en Go son pasadas por valor
+.play -edit -numbers code/double-fail/double-fail.go
+
+* Funciones avanzadas
+
+* Asignación de funciones a variables
+.play -edit -numbers code/func-assign/func-assign.go

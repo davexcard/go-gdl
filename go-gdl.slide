@@ -1,8 +1,8 @@
 Introducción a Go: Variables, tipos de datos y funciones
 
 David Carrillo
-Software Developer, iTexico
-dcarrillo@itexico.net
+Desarrollador de Software
+davexcard@gmail.com
 @davexcard
 
 Sergio Jimenez
@@ -11,33 +11,59 @@ joe@example.com
 http://url/
 @twitter_name
 
-* Title of slide or section (must have asterisk)
+* Tipos de datos básicos
 
-Some Text
+  int8  int16  int32  int64
+  uint uint8 uint16 uint32 uint64 uintptr
 
-- bullets
-- more bullets
-- a bullet with
+  float32 float64
 
-Some More text
+  complex64 complex128
 
-  Preformatted text
-  is indented (however you like)
+  byte  // alias de uint8
 
-Further Text, including invocations like:
+  rune  // alias de int32
+        // representación de un código Unicode
 
-* Example
+  bool
 
-.play -edit -numbers code/x.go
+  string
 
-http://127.0.0.1:3999/talks/2018/go-gdl.slide#3
+.image images/minero.jpeg 190 180
 
-* Ranges
-  uint8  : 0 to 255 
-  uint16 : 0 to 65535 
-  uint32 : 0 to 4294967295 
-  uint64 : 0 to 18446744073709551615 
+* Tipos Numéricos
+
+- Tipos Enteros
+
   int8   : -128 to 127 
   int16  : -32768 to 32767 
   int32  : -2147483648 to 2147483647 
   int64  : -9223372036854775808 to 9223372036854775807
+  uint8  : 0 to 255 
+  uint16 : 0 to 65535 
+  uint32 : 0 to 4294967295 
+  uint64 : 0 to 18446744073709551615 
+
+- Tipo de punto flotante
+
+  float32 : ~7
+  float64 : ~15
+
+* Conversiones de tipos Numéricos
+
+.play -edit -numbers numbers/number_types.go
+.image images/gopherswrench.jpg 300 500
+
+* Strings
+.play -edit -numbers strings/strings.go
+
+* Soporte unicode
+.play -edit -numbers emojis/emojis.go
+
+* Constantes
+
+.play -edit -numbers constants/constants.go
+
+- Se declaran como variables pero con la palabra reservada const.
+- Pueden ser un caracter, cadena de caracteres, booleano o valores numéricos.
+- No pueden ser declaradas con la sintaxis :=

@@ -5,10 +5,10 @@ import "fmt"
 const Pi = 3.14
 
 func main() {
-	const World = "世界"
-	fmt.Println("Hola", World)
-	fmt.Println("pie", Pi)
+	const world = "世界"
+	fmt.Println("Hello, ", world)
+	fmt.Println("Pi = ", Pi)
 
-	const Truth = true
-	fmt.Println("Go rules?", Truth)
+	const truth bool = true
+	fmt.Println("Go rules?", truth)
 }

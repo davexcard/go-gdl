@@ -224,3 +224,100 @@ El tipo de una variable o expresion define las caracteristicas del valor que pod
 - Se declaran como variables pero con la palabra reservada const.
 - Pueden ser un caracter, cadena de caracteres, booleano o valores numéricos.
 - No pueden ser declaradas con la sintaxis :=
+
+* Tipos compuestos
+
+* Tipos Compuestos
+- Arrays
+- Slices
+- Maps
+- Structs
+
+.image images/varios.jpg _ _
+
+* Tipos compuestos
+Arrays
+ Una arrays es una secuencia de tamaño fijo de n cantidad de elementos.
+ 
+: por su tamañao fijo casi no son usados en Go slices son mas versatiles
+	var a [3]int             // array of 3 integers
+	fmt.Println(a[0])        // print the first element
+	fmt.Println(a[len(a)-1]) // print the last element, a[2]
+Tamano determinado mediante elipsis	
+
+	q := [...]int{1, 2, 3}
+	fmt.Printf("%T\n", q) // "[3]int"
+El tamano de un array es parte de su tipo  [3]int y [4]int son diferentes.
+	
+	q := [3]int{1, 2, 3}
+	q = [4]int{1, 2, 3, 4} // compile error: cannot assign [4]int to [3]int
+	
+* Tipos compuestos
+- Slices
+Slices representan sequencias de tamaño variable cuyos elemetos todos son del mismo tipo Un tipo Slice es escrito [ ]Tdonde los elemetos tienes tipo T; luce como un array pero sin tamaño.
+
+* Tipos compuestos
+.image images/slice1.png
+
+* Tipos Compuestos
+-Slices
+The slice operator s[i:j], where 0 ≤ i ≤ j ≤ cap(s), creates a new slice that refers to elements i through j-1 of the sequence s, which may be an array variable, a pointer to an array, or another slice.
+
+	Q2 := months[4:7]
+	summer := months[6:9]
+	fmt.Println(Q2)     // ["April" "May" "June"]
+	fmt.Println(summer) // ["June" "July" "August"]
+	
+Extend an slice
+
+	fmt.Println(summer[:20]) // panic: out of range
+	endlessSummer := summer[:5] // extend a slice (within capacity)
+	fmt.Println(endlessSummer)  // "[June July August September October]"
+	
+* Tipos compuestos
+The append function
+
+.image images/append1.jpg
+
+.image images/append2.jpg
+
+* Tipos compuestos
+- Maps
+Los hashtable es una de la mas ingeniosa is versatiles estructuras de datos.  Es una collecion  no ordenada de pares key/value en los cuales la lleve es distinta y el valor asociado con la llave puede ser recuperado, actualiza o removido en tiempo constante.
+En Go un map es una referencia a un hashtable y es escrito map[ K ]V, donde K y V son los tipos de llave valor.
+La llave debe de ser comparable usando "=="
+La funcion make puede ser creada para crear un map
+
+	ages := make(map[string]int) // mapping from strings to ints
+
+O usando un map literal
+
+	ages := map[string]int {
+    "alice":   31,
+    "charlie": 34,}
+	
+* Tipos compuestos
+Para accesar a elementos
+
+	ages["alice"] = 32
+	fmt.Println(ages["alice"]) // "32"
+Para borrar elementos
+
+	delete(ages, "alice") // remove element ages["alice"]
+
+Son Operaciones seguras incluso sino estan presente
+
+	ages["bob"] = ages["bob"] + 1 // happy birthday!
+	
+* Tipos compuestos
+- Structs
+Un struct es un tipo de datos agregado que agrupo zero o mas valores nombrados de tipos arbitrarios como una sola entidad. Cada valor es llamado campo
+
+.code composite-types/struct1.go
+
+* Tipos compuestos
+- Structs
+Structs literals
+
+	type Point struct{ X, Y int }
+	p := Point{1, 2}

@@ -7,10 +7,167 @@ davexcard@gmail.com
 
 Sergio Jimenez
 Software Developer, iTexico
-joe@example.com
+sjcmexr@gmail.com
 http://url/
 @twitter_name
 
+* Variables
+*  Variables
+- Nombres
+- Declaraciones
+- Asignaciones
+- Declaraciones de tipo
+- Alcance
+
+* Nombres
+Los nombres en Go sigue un simple regla: un nombre comienza con una letra
+ (cualquier cosa que Unicode considere una letra) o un guion bajo.
+ 
+Palabras que no pueden ser usadas como nombres
+.code variables/palabrasreservadas.go
+
+
+
+: puede tener cualquier numbero adicional de letras digitos o guines bajos
+: There is no limit on name length, but convention and stylein Go programs lean toward short names, especially forlocal variables with small scopes; you are 
+: much more likely to see variables named ithan theLoopIndex. 
+
+* Nombres
+Estilisticamete en programas escritos en Go se usa CamelCase
+
+QuoteRuneToASCII
+parseRequestLine 
+
+
+.image images/gopher-ok.PNG 150 _
+
+
+quote_rune_to_ASCII
+parse_request_line
+
+.image images/gopher-no.PNG 150 _
+
+* Declaraciones
+Una declaracion nombra una entidad del programa y especifica alguna o todas sus propiedades. Hay cuatro clases de declaracion principales: var, const, type, func.
+
+.code variables/boiling.go
+
+* Variables
+
+Una declaracion var crea una variable de un tipo en particular, liga un nombre a la variable y setea el valor inicial.
+Cada declaracion tiene la forma general.
+ 
+	var name type = expression
+	
+Go there is no such thing as an uninitialized variable
+
+	var s string
+	fmt.Println(s) // ""
+	
+Inicializacion de multiples variables
+
+	var i, j, k int                 // int, int, int
+	var b, f, s = true, 2.3, "four" // bool, float64, string
+	
+	
+: Package-level variables are initialized before main begins (§2.6.2), and local variables are initialized as their declarations are encountered during function execution
+
+* Variables
+- Declaracion de variables corta
+
+Dentro de una funcion, una forma alternativa llamada short variable declaration puede ser usada para declarar e inicializar variables locales.
+tiene la forma
+
+	name := expression
+	
+El tipo del nombre es determinado por la expresion
+
+	anim := gif.GIF{LoopCount: nframes}
+	freq := rand.Float64() * 3.0
+	t := 0.0
+	
+Declaraciones var son usadas cuando necesitas un tipo en especifico.
+
+	i := 100                  // an int
+	var boiling float64 = 100 // a float64
+	var names []string
+	var err error
+	var p Point
+	
+* Variables
+- Punteros
+
+Un valor puntero es la direccion de una variable. Un puntero es asi la locacion donde un valor es almacenado.
+Con un puntero, podemos leer o actualizar el valor de una variable indirectamente, sin usar o siquiera saber el nombre de la variable, si es que tiene uno.
+
+	x := 1
+	p := &x         // p, of type *int, points to x
+	fmt.Println(*p) // "1"
+	*p = 2          // equivalent to x = 2
+	fmt.Println(x)  // "2"
+
+: Each component of a variable of aggregate type—a field of a struct or an element of an array—is also a variable and thus has an address too.
+	
+#* Variables
+#Es perfectamente seguro para una variable retornar la direccion de una variable local.
+	
+#.play returnLocal.go
+
+: Each time we take the address of a variable or copy a pointer, we create new aliases or ways to
+: identify the same variable. For example, *p is an alias for v. Pointer aliasing is useful because it allows us to access a variable without using its name, but this is a double-edged sword: to find all the statements that access a variable, we have to know all its aliases. It’s not just pointers that create aliases; aliasing also occurs when we copy values of other reference types like slices, maps, and channels, and even structs, arrays, and interfaces that contain these types.
+	
+* Variables
+- La funcion new
+
+Otra manera de crearuna variable es usar la funcion new. La exprecion new(T) crea una variable sin nombre de tipoT, y retorna su direccion, 
+la cual es un valor de tipo *T.
+
+	p := new(int)   // p, of type *int, points to an unnamed int variable
+	fmt.Println(*p) // "0"
+	*p = 2          // sets the unnamed int to 2
+	fmt.Println(*p) // "2"
+Una variable declarada con new no es diferente de una variable local ordinaria cuya direccion es tomada excepto que no necesita inventarle un nombre.
+.code variables/new_comparison.go
+
+* Variables
+- Lifetime of variables
+Es el intervalo de tiempo durante el cual existe durante la ejecucion de un programa.
+
+.play variables/lifetime.go
+
+* Variables
+Asignaciones
+El valor albergado por una variable es cambiado por un asentencia de asignacion, la cual es su forma mas simple tiene una variable a la izquierda del signo '=' y un expresion a la derecha.
+
+	x = 1                       // named variable
+	*p = true                   // indirect variable
+	person.name = "bob"         // struct field
+	count[x] = count[x] * scale // array or slice or map element
+	count[x] *= scale
+
+Asignacion de tupla
+Otra forma de asignacion, conocidad como asignacion de tupla permite varias variables ser asignadas a ala vez. Todas las expresiones del ladoderecho son evaluadas antes de que cualquiera de las variables sea actualizada.
+
+	x, y = y, x   //swap values
+: https://stackoverflow.com/questions/35707222/swap-two-numbers-golang
+	i, j, k = 2, 3, 5     //assign multiple values
+	
+* Variables
+Asignaciones
+Ejemplo fibonacci
+
+.play variables/fibonacci.go
+
+* Declaraciones de Tipo (Type declarations)
+
+El tipo de una variable o expresion define las caracteristicas del valor que podria tomar tales como el tamaño, como esta representado internamente, las operaciones in trinsecas que pueden desempeñarse y los mtodos asociados con el tipo.
+
+		type name underlying-type
+.code variables/temp_conversion.go
+
+* Alcance (Scope)
+.play variables/scope.go
+* Tipos de datos basicos
 * Tipos de datos básicos
 
   int8  int16  int32  int64
